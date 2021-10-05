@@ -23,7 +23,7 @@ gcloud container clusters get-credentials kraken-prod
 cd /work/k8s
 
 for F in $(ls *.yaml); do kubectl create -f $F; done
-BASH
+
 
 
 
@@ -34,7 +34,7 @@ Still in kraken-jumphost's SSH, run
 gcloud config set compute/zone us-east1-b
 
 gcloud compute instances create kraken-admin --network-interface="subnet=kraken-mgmt-subnet" --network-interface="subnet=kraken-prod-subnet"
-BASH
+
 Create alert
 Open monitoring
 Create an alert
@@ -61,7 +61,7 @@ gcloud container clusters get-credentials spinnaker-tutorial
 DECK_POD=$(kubectl get pods --namespace default -l "cluster=spin-deck" -o jsonpath="{.items[0].metadata.name}")
 
 kubectl port-forward --namespace default $DECK_POD 8080:9000 >> /dev/null &
-BASH
+
 
 
 
@@ -92,5 +92,5 @@ git config --global user.name "Student"
 git commit -a -m "change"
 git tag v1.0.1
 git push --tags
-BASH
+
 Congratulations, you're all done with the lab 😄
